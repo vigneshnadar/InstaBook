@@ -10,4 +10,20 @@
   </button>
 
 
+  <h2>Course Grid ({{books.length}})</h2>
+
+  <div class="row">
+    <div *ngFor="let book of books" class="col-sm-3">
+      <div class="card">
+        <img class="card-img-top" src={{book.volumeInfo.imageLinks.thumbnail}} alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{book.volumeInfo.title}}</h5>
+          <p class="card-text">{{book.searchInfo.textSnippet}}</p>
+          <a class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </div>

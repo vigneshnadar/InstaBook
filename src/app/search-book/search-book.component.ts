@@ -9,7 +9,8 @@ import { parseString} from 'xml2js';
 export class SearchBookComponent implements OnInit {
 
 
-  bookname = 'titan';
+  bookname = '';
+  books = [];
 
   constructor() { }
 
@@ -19,10 +20,11 @@ export class SearchBookComponent implements OnInit {
     console.log(book);
 
     fetch
-    ('https://www.googleapis.com/books/v1/volumes?q=php')
+    ('https://www.googleapis.com/books/v1/volumes?q=' + book)
       .then(response => response.json())
       .then(booklist => {
-        console.log(booklist);
+        this.books = booklist.items;
+        console.log(this.books);
       });
   }
   // findAllCourses() {

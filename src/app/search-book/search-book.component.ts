@@ -11,6 +11,7 @@ export class SearchBookComponent implements OnInit {
 
   bookname = '';
   books = [];
+  currentBook;
 
   constructor() { }
 
@@ -26,6 +27,11 @@ export class SearchBookComponent implements OnInit {
         this.books = booklist.items;
         console.log(this.books);
       });
+  }
+
+
+  details(book) {
+    this.currentBook = book;
   }
   // findAllCourses() {
   //   return fetch

@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div >
+  <button (click)="logout()"
+          class="btn btn-primary btn-danger">
+    Logout
+  </button>
+  <button (click)="home()"
+          class="btn btn-primary btn-success">
+    Home
+  </button>
+  <button *ngIf="user.admin" (click)="admin()"
+          class="btn btn-primary btn-dark">
+    Admin
+  </button>
+  </div>
+
+  <h1>Profile</h1>
+  <input [(ngModel)]="user.username"
+         placeholder="User Name"
+         class="form-control"/>
+  <input [(ngModel)]="user.password"
+         placeholder="Password"
+         class="form-control"/>
+  <input [(ngModel)]="user.firstName"
+         placeholder="first name"
+         class="form-control"/>
+  <input [(ngModel)]="user.lastName"
+         placeholder="lastName"
+         class="form-control"/>
+  <input [(ngModel)]="user.email"
+         placeholder="email"
+         class="form-control"/>
+  <button (click)="update(user)"
+          class="btn btn-primary btn-block">
+    Update
+  </button>
+
+  <h2>Sections {{sections.length}}</h2>
+  <ul class="list-group">
+    <li *ngFor="let enrollment of sections" class="list-group-item">
+      {{enrollment.section.name}}
+      ({{enrollment.section.seats}})
+    </li>
+  </ul>
+
+  <!--<a (click)="logout()">Logout</a>-->
+  <!--<a routerLink="/home">Home</a>-->
+  <!--<a routerLink="/admin">Admin</a>-->
+
+
+</div>

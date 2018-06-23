@@ -26,6 +26,7 @@ import {UserServiceCleint} from './services/user.service.cleint';
 import { SectionListComponent } from './section-list/section-list.component';
 import {SectionServiceClient} from './services/section.service.client';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import {BookServiceClient} from './services/book.service.client';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     LessonServiceClient,
     WidgetServiceClient,
     UserServiceCleint,
-    SectionServiceClient
+    SectionServiceClient,
+    BookServiceClient
   ],
   bootstrap: [AppComponent]
 })

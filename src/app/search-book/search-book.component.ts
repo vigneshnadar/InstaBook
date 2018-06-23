@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { parseString} from 'xml2js';
+import {BookServiceClient} from '../services/book.service.client';
 
 @Component({
   selector: 'app-search-book',
@@ -12,8 +13,9 @@ export class SearchBookComponent implements OnInit {
   bookname = '';
   books = [];
   currentBook;
+  bookMarkVisible = false;
 
-  constructor() { }
+  constructor(private bookService: BookServiceClient) { }
 
   ngOnInit() {
   }
@@ -32,7 +34,30 @@ export class SearchBookComponent implements OnInit {
 
   details(book) {
     this.currentBook = book;
+    this.bookMarkVisible = true;
   }
+
+
+
+  bookmark(book) {
+    // create a book and then bookmark it
+    const newBook = {
+      name: book.volumeInfo.title,
+      description: book.searchInfo.textSnippet,
+      imageurl: book.volumeInfo.imageLinks.thumbnail
+    }
+    console.log(newBook);
+    // alert(section._id);
+    this.bookService.createBook(newBook)
+      .then(createdBook => {
+        console.log(createdBook);
+      });
+    // this.B.enrollStudentInSection(section._id)
+    //   .then(() => {
+    //     this.router.navigate(['profile']);
+    //   });
+  }
+
   // findAllCourses() {
   //   return fetch
   //   ('http://localhost:8080/api/course')

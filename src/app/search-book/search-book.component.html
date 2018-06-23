@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6">
-  <h1>Profile</h1>
+  <h1>InstaBook</h1>
   <input [(ngModel)]="bookname"
          placeholder="search book"
          class="form-control"/>
@@ -50,6 +50,12 @@
         <div class="col-md-4">
           <img src="{{currentBook.volumeInfo.imageLinks.thumbnail}}"
                width="100%">
+          <br/>
+          <br/>
+          <button *ngIf="bookMarkVisible" (click)="bookmark(currentBook)"
+                  class="btn btn-warning btn-block">
+            BookMark
+          </button>
     </div>
         <div class="col-md-8">
           <p class="card-text">{{currentBook.searchInfo.textSnippet}}</p>

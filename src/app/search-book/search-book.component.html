@@ -1,6 +1,7 @@
 <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
   <h1>Profile</h1>
-
   <input [(ngModel)]="bookname"
          placeholder="search book"
          class="form-control"/>
@@ -12,18 +13,41 @@
 
   <h2>Search Results</h2>
 
-  <div class="row">
-    <div *ngFor="let book of books" class="col-sm-3">
-      <div class="card">
-        <img class="card-img-top" src={{book.volumeInfo.imageLinks.thumbnail}} alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{book.volumeInfo.title}}</h5>
-          <p class="card-text">{{book.searchInfo.textSnippet}}</p>
-          <a class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+  <!--<div class="row">-->
+    <!--<div *ngFor="let book of books" class="col-sm-3">-->
+      <!--<div class="card">-->
+        <!--<img class="card-img-top" src={{book.volumeInfo.imageLinks.thumbnail}} alt="Card image cap">-->
+        <!--<div class="card-body">-->
+          <!--<h5 class="card-title">{{book.volumeInfo.title}}</h5>-->
+          <!--<p class="card-text">{{book.searchInfo.textSnippet}}</p>-->
+          <!--<a class="btn btn-primary">Go somewhere</a>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<ul class="list-group">
+      <!--<li -->
+        <!--(click)="details(m.imdbID)"-->
+          <!--*ngFor="let book of books"-->
+          <!--[ngClass]="{'active':-->
+       <!--m.imdbID === movie.imdbID}"-->
+          <li class="list-group-item"
+              *ngFor="let book of books">
+        <img src="{{book.volumeInfo.imageLinks.thumbnail}}"
+             width="30px">
+  {{book.volumeInfo.title}}
+      </li>
+</ul>
     </div>
   </div>
 
+
+  <div class="row">
+    <div class="col-md-6">
+<h1></h1>
+      <div class="row">
+        <div class="col-md-6">
+    </div>
+  </div>
 
 </div>

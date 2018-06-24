@@ -70,4 +70,8 @@ this.service
     this.router.navigate(['admin']);
   }
 
+  author() {
+    this.router.navigate(['author']);
+  }
+
 }

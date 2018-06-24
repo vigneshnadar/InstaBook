@@ -27,6 +27,7 @@ import { SectionListComponent } from './section-list/section-list.component';
 import {SectionServiceClient} from './services/section.service.client';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import {BookServiceClient} from './services/book.service.client';
+import { AuthorPageComponent } from './author-page/author-page.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {BookServiceClient} from './services/book.service.client';
     RegisterComponent,
     ProfileComponent,
     SectionListComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    AuthorPageComponent
   ],
   imports: [
     BrowserModule,

@@ -9,11 +9,13 @@ import {ProfileComponent} from "./profile/profile.component";
 import {SectionListComponent} from './section-list/section-list.component';
 import {AdminPageComponent} from './admin-page/admin-page.component';
 import { SearchBookComponent } from './search-book/search-book.component';
+import {AuthorPageComponent} from './author-page/author-page.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: SearchBookComponent},
   {path: 'admin', component: AdminPageComponent},
+  {path: 'author', component: AuthorPageComponent},
   { path: 'course/:courseId/section', component: AdminPageComponent },
   { path: 'enroll/course/:courseId/section', component: SectionListComponent },
   { path: 'login', component: LoginComponent},

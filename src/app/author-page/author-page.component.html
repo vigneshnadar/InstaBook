@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <h1>Author: {{currentUser.username}}</h1>
+  <div >
+    <input [(ngModel)]="bookName"
+           placeholder="Book Name"
+           class="form-control"/>
+    <input [(ngModel)]="bookDesc"
+           placeholder="Book Description"
+           class="form-control"/>
+    <input [(ngModel)]="bookUrl"
+           placeholder="Image Url"
+           class="form-control"/>
+    <button (click)="createBook(bookName, bookDesc, bookUrl)" class="btn btn-success btn-block">
+      Create Book
+    </button>
+    <!--<button (click)="editSection(sectionName, seats)" class="btn btn-primary btn-block">-->
+      <!--Edit and Update Book-->
+    <!--</button>-->
+  </div>
+
+  <ul class="list-group">
+    <li *ngFor="let book of books" class="list-group-item">
+      {{book.name}} {{book.description}}
+
+    </li>
+  </ul>
+</div>
+
+
+<!--<button *ngIf="isAdmin" (click)="populateField(section._id, section.name,section.seats)" class="float-right btn btn-warning">Edit</button>-->
+<!--<button *ngIf="isAdmin" (click)="deleteSection(section)" class="float-right btn btn-danger">Delete</button>-->
+<!--<button *ngIf="!isAdmin" (click)="unenroll(section)" class="float-right btn btn-info">UnEnroll</button>-->
+<!--<button *ngIf="!isAdmin" (click)="enroll(section)" class="float-right btn btn-primary">Enroll</button>-->

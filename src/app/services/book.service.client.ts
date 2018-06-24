@@ -31,6 +31,17 @@ export class BookServiceClient {
     });
   }
 
+  findBookByAuthor() {
+    const url = 'http://localhost:4000/api/book/author';
+
+    return fetch(url , {
+      method: 'GET',
+      credentials: 'include'
+    })
+      .then(response => response.json());
+  }
+
+
 
   // unenrollStudentInSection(sectionId) {
   //   const url = 'http://localhost:4000/api/section/' + sectionId + '/unenrollment';

@@ -64,6 +64,24 @@
         </div>
   </div>
 
+      <div class="container-fluid">
+        <h1>Add Review </h1>
+        <div >
+          <input [(ngModel)]="reviewStr"
+                 placeholder="Review"
+                 class="form-control"/>
+          <button (click)="addReview(reviewStr, currentBook)" class="btn btn-success btn-block">
+            Add Review
+          </button>
+        </div>
+
+        <ul class="list-group">
+          <li *ngFor="let review of reviews" class="list-group-item">
+            {{review.review}}
+          </li>
+        </ul>
+      </div>
+
 </div>
   </div>
 </div>

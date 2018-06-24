@@ -31,6 +31,35 @@ export class BookServiceClient {
     });
   }
 
+  // app.get('/api/book/:bookId/review', findReviewsForBook)
+  // app.post('/api/:bookId/review', addReview)
+
+
+  findReviewsForBook(bookId) {
+    const url = 'http://localhost:4000/api/book/' + bookId + '/review';
+    return fetch(url , {
+
+      credentials: 'include'
+    })
+      .then(response => response.json());
+  }
+  addReview(bookId, currentReview) {
+    const url = 'http://localhost:4000/api/' + bookId + '/review';
+    const rev = {
+      review : currentReview
+    }
+
+    return fetch(url , {
+      method: 'POST',
+      credentials: 'include',
+      body: JSON.stringify(rev),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(response => response.json());
+  }
+
   findBookByAuthor() {
     const url = 'http://localhost:4000/api/book/author';
 

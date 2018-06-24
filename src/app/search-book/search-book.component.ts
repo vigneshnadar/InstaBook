@@ -16,6 +16,8 @@ export class SearchBookComponent implements OnInit {
     id : '0'
   };
   bookMarkVisible = false;
+  reviewStr = '';
+  reviews = [];
 
   constructor(private bookService: BookServiceClient) {
     this.searchBook('titans');
@@ -42,6 +44,33 @@ export class SearchBookComponent implements OnInit {
     console.log(this.currentBook);
     this.bookMarkVisible = true;
   }
+
+  // app.get('/api/book/:bookId/review', findReviewsForBook)
+  // app.post('/api/:bookId/review', addReview)
+
+  addReview(currentReview, cb) {
+    const newBook = {
+      name: cb.volumeInfo.title,
+      description: cb.searchInfo.textSnippet,
+      imageurl: cb.volumeInfo.imageLinks.thumbnail
+    }
+    console.log(newBook);
+    // alert(section._id);
+    this.bookService.createBook(newBook)
+      .then(createdBook => {
+        console.log(createdBook);
+        this.bookService.addReview(createdBook._id, currentReview)
+          .then(response => {
+            this.bookService.findReviewsForBook(createdBook._id)
+              .then(reviews => {
+                console.log('review');
+                console.log(reviews);
+                this.reviews = reviews;
+              });
+          });
+      });
+  }
+
 
 
 

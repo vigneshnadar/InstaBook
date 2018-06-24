@@ -12,7 +12,9 @@ export class SearchBookComponent implements OnInit {
 
   bookname = '';
   books = [];
-  currentBook;
+  currentBook = {
+    id : '0'
+  };
   bookMarkVisible = false;
 
   constructor(private bookService: BookServiceClient) { }
@@ -34,6 +36,8 @@ export class SearchBookComponent implements OnInit {
 
   details(book) {
     this.currentBook = book;
+    console.log('currentbook');
+    console.log(this.currentBook);
     this.bookMarkVisible = true;
   }
 
@@ -51,7 +55,10 @@ export class SearchBookComponent implements OnInit {
     this.bookService.createBook(newBook)
       .then(createdBook => {
         console.log(createdBook);
+        this.bookService.bookmarkUserInBook(createdBook._id);
       });
+
+
     // this.B.enrollStudentInSection(section._id)
     //   .then(() => {
     //     this.router.navigate(['profile']);

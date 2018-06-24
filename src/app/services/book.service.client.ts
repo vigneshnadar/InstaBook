@@ -13,7 +13,7 @@ export class BookServiceClient {
   // }
 
   bookmarkUserInBook(bookId) {
-    const url = 'http://localhost:4000/api/book/' + bookId + '/enrollment';
+    const url = 'http://localhost:4000/api/book/' + bookId + '/bookmark';
 
     return fetch(url , {
       method: 'POST',

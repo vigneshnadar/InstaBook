@@ -29,11 +29,13 @@
       <!--<li -->
         <!--(click)="details(m.imdbID)"-->
           <!--*ngFor="let book of books"-->
-          <!--[ngClass]="{'active':-->
-       <!--m.imdbID === movie.imdbID}"-->
+  <!--[ngClass]="{'active':-->
+  <!--book.accessInfo.id === currentBook.accessInfo.id}"-->
+  <!--[ngClass]="{'active': book.accessInfo.id === currentBook.accessInfo.id}"-->
           <li class="list-group-item"
               *ngFor="let book of books"
-              (click)="details(book)">
+              (click)="details(book)"
+              [ngClass]="{'active': book.id === currentBook.id}">
         <img src="{{book.volumeInfo.imageLinks.thumbnail}}"
              width="30px">
   {{book.volumeInfo.title}}

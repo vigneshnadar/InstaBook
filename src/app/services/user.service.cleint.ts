@@ -10,6 +10,13 @@ export class UserServiceCleint {
       .then(response => response.json());
   }
 
+  findAllUsers() {
+    return fetch('http://localhost:4000/api/user', {
+      credentials: 'include', // include, same-origin, *omit
+    })
+      .then(response => response.json());
+  }
+
   profile() {
 return fetch('http://localhost:4000/api/profile',{
   credentials: 'include', // include, same-origin, *omit
@@ -75,6 +82,15 @@ return fetch('http://localhost:4000/api/profile',{
     'content-type': 'application/json'
   }
 });
+}
+
+
+followUser(userId) {
+
+  return fetch('http://localhost:4000/api/user/follow/' + userId, {
+    method: 'POST',
+    credentials: 'include'
+  });
 }
 
 }

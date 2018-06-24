@@ -1,0 +1,19 @@
+
+<h1>User Grid ({{otherusers.length}})</h1>
+<hr/>
+<div class="row">
+  <div *ngFor="let u of otherusers" class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{u.username}}</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a routerLink="/course/{{u.username}}"
+           class="btn btn-info">View Profile</a>
+        <button (click)="followUser(u._id)"
+                class="btn btn-warning">Follow</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -28,6 +28,8 @@ import {SectionServiceClient} from './services/section.service.client';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import {BookServiceClient} from './services/book.service.client';
 import { AuthorPageComponent } from './author-page/author-page.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { UserGridComponent } from './user-grid/user-grid.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { AuthorPageComponent } from './author-page/author-page.component';
     ProfileComponent,
     SectionListComponent,
     AdminPageComponent,
-    AuthorPageComponent
+    AuthorPageComponent,
+    LandingPageComponent,
+    UserGridComponent
   ],
   imports: [
     BrowserModule,

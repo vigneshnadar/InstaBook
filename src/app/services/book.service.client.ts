@@ -12,6 +12,16 @@ export class BookServiceClient {
   //     .then(response => response.json());
   // }
 
+  findBooksForReader() {
+      const url = 'http://localhost:4000/api/reader/book';
+
+      return fetch(url, {
+        credentials: 'include'
+      })
+        .then(response => response.json());
+    }
+
+
   bookmarkUserInBook(bookId) {
     const url = 'http://localhost:4000/api/book/' + bookId + '/bookmark';
 

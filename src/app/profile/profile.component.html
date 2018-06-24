@@ -35,11 +35,11 @@
     Update
   </button>
 
-  <h2>Sections {{sections.length}}</h2>
+  <h2>Bookmarked Books {{books.length}}</h2>
   <ul class="list-group">
-    <li *ngFor="let enrollment of sections" class="list-group-item">
-      {{enrollment.section.name}}
-      ({{enrollment.section.seats}})
+    <li *ngFor="let b of books" class="list-group-item">
+      {{b.book.name}}
+      ({{b.book.description}})
     </li>
   </ul>
 

@@ -46,6 +46,20 @@
       ({{b.book.description}})
     </li>
   </ul>
+  <hr/>
+  <h2>Following ({{following.length}})</h2>
+  <ul class="list-group">
+    <li *ngFor="let follow of following" class="list-group-item">
+      {{follow.user.username}}
+    </li>
+  </ul>
+  <hr/>
+  <h2>Followed By ({{followedBy.length}})</h2>
+  <ul class="list-group">
+    <li *ngFor="let follow of followedBy" class="list-group-item">
+      {{follow.followedBy.username}}
+    </li>
+  </ul>
 
   <!--<a (click)="logout()">Logout</a>-->
   <!--<a routerLink="/home">Home</a>-->

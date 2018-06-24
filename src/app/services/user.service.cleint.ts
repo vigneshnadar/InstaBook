@@ -93,4 +93,34 @@ followUser(userId) {
   });
 }
 
+
+  findFollowingReaders(userId) {
+    console.log('test call')
+
+    return fetch('http://localhost:4000/api/testuser/follow', {
+      method: 'GET',
+      credentials: 'include'
+    })
+      .then(response => {
+        console.log('res');
+        console.log(response);
+        return response.json();
+      });
+  }
+
+
+  findFollowedByReaders(userId) {
+    console.log('test call')
+
+    return fetch('http://localhost:4000/api/testuser/followedby', {
+      method: 'GET',
+      credentials: 'include'
+    })
+      .then(response => {
+        console.log('res');
+        console.log(response);
+        return response.json();
+      });
+  }
+
 }

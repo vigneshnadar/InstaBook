@@ -17,7 +17,9 @@ export class SearchBookComponent implements OnInit {
   };
   bookMarkVisible = false;
 
-  constructor(private bookService: BookServiceClient) { }
+  constructor(private bookService: BookServiceClient) {
+    this.searchBook('titans');
+  }
 
   ngOnInit() {
   }

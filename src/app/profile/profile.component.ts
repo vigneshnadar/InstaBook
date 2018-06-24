@@ -20,6 +20,8 @@ export class ProfileComponent implements OnInit {
   password;
   sections = [];
   books = [];
+  following = [];
+  followedBy = [];
   update(user: User) {
     console.log(user);
     this.service.updateProfile(user.username, user.password, user.firstName, user.lastName, user.email)
@@ -32,6 +34,20 @@ export class ProfileComponent implements OnInit {
       .then(user => {
         this.user = user;
         console.log(user._id);
+
+        this.service.findFollowingReaders(user._id)
+          .then( following => {
+            console.log(following);
+            console.log('testing');
+            this.following = following;
+          });
+
+
+        this.service.findFollowedByReaders(user._id)
+          .then( followedBy => {
+            console.log(followedBy);
+            this.followedBy = followedBy;
+          });
 
         this.service.findUserById(user._id)
           .then(newuser => {

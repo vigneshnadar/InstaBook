@@ -58,4 +58,8 @@ export class TopNavbarComponent implements OnInit {
     this.router.navigate(['register']);
   }
 
+  profile() {
+    this.router.navigate(['profile']);
+  }
+
 }

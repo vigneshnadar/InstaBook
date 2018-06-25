@@ -4,30 +4,34 @@
   <h1>InstaBOOK</h1>
   </div>
   <div class="col-md-6">
-<div class="btn-group float-right">
+<div class="float-right">
 
   <button (click)="home()"
-          class="btn btn-primary btn-primary">
+          class="btn btn-primary btn-outline-dark">
     Home
   </button>
   <button *ngIf="user.admin" (click)="admin()"
-          class="btn btn-primary btn-dark">
+          class="btn btn-primary btn-outline-dark">
     Admin
   </button>
   <button (click)="author()"
-          class="btn btn-primary btn-warning">
+          class="btn btn-primary btn-outline-dark">
     Author
   </button>
   <button (click)="login()"
-          class="btn btn-primary btn-success">
+          class="btn btn-primary btn-outline-dark">
     Login
   </button>
   <button (click)="register()"
-          class="btn btn-primary btn-info">
+          class="btn btn-primary btn-outline-dark">
     Register
   </button>
+  <button (click)="profile()"
+          class="btn btn-primary btn-outline-dark">
+    Profile
+  </button>
   <button (click)="logout()"
-          class="btn btn-primary btn-danger">
+          class="btn btn-primary btn-outline-dark">
     Logout
   </button>
   <!--<h3>Welcome {{user.username}}!!</h3>-->

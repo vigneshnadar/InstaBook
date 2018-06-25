@@ -1,66 +1,91 @@
 <div class="container-fluid">
   <div >
-  <button (click)="logout()"
-          class="btn btn-primary btn-danger">
-    Logout
-  </button>
-  <button (click)="home()"
-          class="btn btn-primary btn-success">
-    Home
-  </button>
-  <button *ngIf="user.admin" (click)="admin()"
-          class="btn btn-primary btn-dark">
-    Admin
-  </button>
-    <button (click)="author()"
-            class="btn btn-primary btn-warning">
-      Author
-    </button>
+  <app-top-navbar></app-top-navbar>
   </div>
-
+<div class="row">
+  <div class="col-md-6">
   <h1>Profile</h1>
   <input [(ngModel)]="user.username"
          placeholder="User Name"
          class="form-control"/>
+  <br/>
   <input [(ngModel)]="user.password"
          placeholder="Password"
          class="form-control"/>
+  <br/>
   <input [(ngModel)]="user.firstName"
          placeholder="first name"
          class="form-control"/>
+  <br/>
   <input [(ngModel)]="user.lastName"
          placeholder="lastName"
          class="form-control"/>
+  <br/>
   <input [(ngModel)]="user.email"
          placeholder="email"
          class="form-control"/>
+  <br/>
   <button (click)="update(user)"
-          class="btn btn-primary btn-block">
+          class="btn btn-dark">
     Update
   </button>
+  </div>
+  <div class="col-md-6">
+    <h2>Bookmarks ({{books.length}})</h2>
+    <ul class="list-group">
+      <li *ngFor="let b of books" class="list-group-item">
+        <div class="row">
+          <div class="col-md-2">
+            <img class="float-left" src="{{b.book.imageurl}}"
+                 width="100%">
+          </div>
+          <div class="col-md-10">
+            <h4>{{b.book.name}}</h4>
 
-  <h2>Bookmarked Books {{books.length}}</h2>
-  <ul class="list-group">
-    <li *ngFor="let b of books" class="list-group-item">
-      {{b.book.name}}
-      ({{b.book.description}})
-    </li>
-  </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
   <hr/>
+  <div class="row">
+
+  <div class="col-md-6">
   <h2>Following ({{following.length}})</h2>
   <ul class="list-group">
     <li *ngFor="let follow of following" class="list-group-item">
-      {{follow.user.username}}
+      <div class="row">
+        <div class="col-md-2">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzzHdPy8TkjLKXWRU0G3ledcSW95_Q5_UCJVpGvclWKxzVEBET"
+               width="100%" >
+        </div>
+        <div class="col-md-10">
+          <b>{{follow.user.username}} </b><br/>
+        </div>
+      </div>
+
     </li>
   </ul>
-  <hr/>
+  </div>
+  <div class="col-md-6">
   <h2>Followed By ({{followedBy.length}})</h2>
   <ul class="list-group">
     <li *ngFor="let follow of followedBy" class="list-group-item">
-      {{follow.followedBy.username}}
+      <div class="row">
+        <div class="col-md-2">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAwWs6KvTQEczjXUYwvBMXFfYf5MciLTsTSonSL_wwaS_QhT3oeA"
+               width="100%" >
+        </div>
+        <div class="col-md-10">
+          <b>{{follow.followedBy.username}} </b><br/>
+        </div>
+      </div>
+
     </li>
   </ul>
-
+  </div>
+  </div>
   <!--<a (click)="logout()">Logout</a>-->
   <!--<a routerLink="/home">Home</a>-->
   <!--<a routerLink="/admin">Admin</a>-->

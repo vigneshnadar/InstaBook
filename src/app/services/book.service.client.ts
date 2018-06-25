@@ -60,6 +60,16 @@ export class BookServiceClient {
       .then(response => response.json());
   }
 
+  findBookByTitle(title) {
+    const url = 'http://localhost:4000/api/book/title/' + title;
+
+    return fetch(url , {
+      method: 'GET',
+      credentials: 'include'
+    })
+      .then(response => response.json());
+  }
+
   findBookByAuthor() {
     const url = 'http://localhost:4000/api/book/author';
 

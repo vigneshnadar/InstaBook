@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { parseString} from 'xml2js';
 import {BookServiceClient} from '../services/book.service.client';
+import {UserServiceCleint} from '../services/user.service.cleint';
 
 @Component({
   selector: 'app-search-book',
@@ -18,9 +19,15 @@ export class SearchBookComponent implements OnInit {
   bookMarkVisible = false;
   reviewStr = '';
   reviews = [];
+  user;
 
-  constructor(private bookService: BookServiceClient) {
-    this.searchBook('titans');
+  constructor(private bookService: BookServiceClient,
+              private userService: UserServiceCleint) {
+    this.userService.profile()
+      .then(user => {
+        this.user = user;
+        console.log(user._id);
+      });
   }
 
   ngOnInit() {
@@ -76,18 +83,42 @@ export class SearchBookComponent implements OnInit {
 
   bookmark(book) {
     // create a book and then bookmark it
-    const newBook = {
-      name: book.volumeInfo.title,
-      description: book.searchInfo.textSnippet,
-      imageurl: book.volumeInfo.imageLinks.thumbnail
-    }
-    console.log(newBook);
     // alert(section._id);
-    this.bookService.createBook(newBook)
-      .then(createdBook => {
-        console.log(createdBook);
-        this.bookService.bookmarkUserInBook(createdBook._id);
-      });
+    if (this.user.username === 'unregistered') {
+      alert('Please register/login to bookmark');
+    } else {
+      const newBook = {
+        name: book.volumeInfo.title,
+        description: book.searchInfo.textSnippet,
+        imageurl: book.volumeInfo.imageLinks.thumbnail
+      }
+      console.log(newBook);
+      this.bookService.findBookByTitle(book.volumeInfo.title)
+        .then(cb => {
+          console.log('book by title');
+              // console.log(createdBook);
+              if (cb.length === 0) {
+                console.log('not found');
+
+                this.bookService.createBook(newBook)
+                  .then(createdBook => {
+                    console.log(createdBook);
+                    this.bookService.bookmarkUserInBook(createdBook._id);
+                  });
+              } else {
+                console.log('book found');
+                console.log(cb);
+                console.log(cb[0]._id);
+                this.bookService.bookmarkUserInBook(cb[0]._id);
+              }
+              // this.bookService.bookmarkUserInBook(createdBook._id);
+            });
+      // this.bookService.createBook(newBook)
+      //   .then(createdBook => {
+      //     console.log(createdBook);
+      //     this.bookService.bookmarkUserInBook(createdBook._id);
+      //   });
+    }
 
 
     // this.B.enrollStudentInSection(section._id)

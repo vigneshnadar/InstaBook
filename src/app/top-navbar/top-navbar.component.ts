@@ -50,4 +50,12 @@ export class TopNavbarComponent implements OnInit {
     this.router.navigate(['author']);
   }
 
+  login() {
+    this.router.navigate(['login']);
+  }
+
+  register() {
+    this.router.navigate(['register']);
+  }
+
 }

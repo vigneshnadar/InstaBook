@@ -2,7 +2,7 @@
 <div class="container-fluid">
   <app-top-navbar></app-top-navbar>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="input-group">
   <input [(ngModel)]="bookname"
          placeholder="Search Book"
@@ -41,13 +41,14 @@
               (click)="details(book)"
               [ngClass]="{'active': book.id === currentBook.id}">
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-2">
         <img class="float-left" src="{{book.volumeInfo.imageLinks.thumbnail}}"
              width="100%">
               </div>
-                <div class="col-md-8">
+                <div class="col-md-10">
             <h4>{{book.volumeInfo.title}} </h4>
                   by <b>{{book.volumeInfo.authors[0]}}</b>
+
             </div>
             </div>
       </li>
@@ -57,9 +58,9 @@
 
 
 
-    <div class="col-md-6">
+    <div class="col-md-8">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-2">
           <img src="{{currentBook.volumeInfo.imageLinks.thumbnail}}"
                width="100%">
           <br/>
@@ -69,35 +70,38 @@
             BookMark
           </button>
     </div>
-        <div *ngIf="bookClicked" class="col-md-8">
+        <div *ngIf="bookClicked" class="col-md-10">
           <h1>{{currentBook.volumeInfo.title}}</h1>
-          by <b>{{currentBook.volumeInfo.authors[0]}}</b>
+          by <b>{{currentBook.volumeInfo.authors[0]}}</b><br/>
+          Avg Rating : {{currentBook.volumeInfo.averageRating}}
           <p class="card-text">{{currentBook.searchInfo.textSnippet}}</p>
         </div>
   </div>
-
+      <hr/>
       <div *ngIf="bookClicked" class="container-fluid">
         <h4>Add Review </h4>
-        <div>
+        <div class="input-group">
           <input [(ngModel)]="reviewStr"
                  placeholder="Review"
-                 class="form-control"/>
+                 class="form-control">
+          <div class="input-group-append">
           <button (click)="addReview(reviewStr, currentBook)" class="btn btn-success btn-block">
             Add Review
           </button>
-          <hr/>
+          </div>
         </div>
-<h4>InstaBook community reviews</h4>
+        <hr/>
+<h4>InstaBook community reviews ({{reviews.length}})</h4>
         <ul class="list-group">
 
           <li *ngFor="let review of reviews" class="list-group-item">
             <div class="row">
-              <div class="col-md-4">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAwWs6KvTQEczjXUYwvBMXFfYf5MciLTsTSonSL_wwaS_QhT3oeA"
+              <div class="col-md-1">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3T1hbxLKDW_pCT4YinWNZw5Kx3xu13F3mes6b1uXH0yUEo3GLTg"
                      width="100%" >
               </div>
-              <div class="col-md-8">
-            {{review.reader.username}} <br/>
+              <div class="col-md-11">
+                <b>{{review.reader.username}} </b><br/>
             {{review.review}}
               </div>
             </div>

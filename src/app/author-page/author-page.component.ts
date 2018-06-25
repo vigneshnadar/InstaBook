@@ -53,7 +53,7 @@ export class AuthorPageComponent implements OnInit {
             // this.user = newuser;
             console.log('user');
             console.log(newuser);
-            this.currentUser = newuser
+            this.currentUser = newuser;
             this.isAdmin = newuser.admin;
           });
 

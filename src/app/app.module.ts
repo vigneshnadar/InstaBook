@@ -30,6 +30,8 @@ import {BookServiceClient} from './services/book.service.client';
 import { AuthorPageComponent } from './author-page/author-page.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserGridComponent } from './user-grid/user-grid.component';
+import { TopNavbarComponent } from './top-navbar/top-navbar.component';
+import { AuthorHostComponent } from './author-host/author-host.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { UserGridComponent } from './user-grid/user-grid.component';
     AdminPageComponent,
     AuthorPageComponent,
     LandingPageComponent,
-    UserGridComponent
+    UserGridComponent,
+    TopNavbarComponent,
+    AuthorHostComponent
   ],
   imports: [
     BrowserModule,

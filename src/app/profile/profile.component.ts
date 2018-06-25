@@ -25,7 +25,10 @@ export class ProfileComponent implements OnInit {
   update(user: User) {
     console.log(user);
     this.service.updateProfile(user.username, user.password, user.firstName, user.lastName, user.email)
-      .then( () => console.log('update'));
+      .then( () => {
+        console.log('update')
+        alert('Profile Updated');
+      });
         // user => this.user = user);
   }
 

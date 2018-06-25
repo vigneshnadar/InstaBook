@@ -5,14 +5,17 @@
   <input [(ngModel)]="username"
          placeholder="username"
          class="form-control"/>
+  <br/>
   <input [(ngModel)]="password"
          placeholder="password"
          class="form-control"/>
+  <br/>
   <input [(ngModel)]="password2"
          placeholder="verify password"
          class="form-control"/>
+  <br/>
   <button (click)="register(username, password, password2)"
-          class="btn btn-primary btn-block">
+          class="btn btn-dark">
     Register
   </button>
 

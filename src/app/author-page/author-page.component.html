@@ -28,13 +28,24 @@
 <h1>Author Book List</h1>
   <ul class="list-group">
     <li *ngFor="let book of books" class="list-group-item">
-      {{book.name}} {{book.description}}
-      <button (click)="deleteBook(book._id)" class="float-right btn btn-danger ">
-        Delete
-      </button>
-      <button (click)="editBook(book._id, book.name, book.description, book.imageurl)" class="float-right btn btn-success">
-        Edit
-      </button>
+      <div class="row">
+        <div class="col-md-2">
+          <img class="float-left" src="{{book.imageurl}}"
+               width="100%">
+        </div>
+        <div class="col-md-10">
+          <h4>{{book.name}} </h4>
+          by <b>{{currentUser.username}}</b><br/>
+            {{book.description}}
+          <br/>
+          <i (click)="editBook(book._id, book.name, book.description, book.imageurl)" style="font-size:30px" class="fa fa-pencil">
+          </i>
+          <i (click)="deleteBook(book._id)" class="fa fa-trash-o" style="font-size:30px">
+          </i>
+
+        </div>
+      </div>
+
 
     </li>
   </ul>

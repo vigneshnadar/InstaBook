@@ -1,18 +1,6 @@
+
 <div class="container">
-<div class="row">
-  <button (click)="home()"
-          class="btn btn-primary btn-success">
-    Home
-  </button>
-  <button (click)="profile()"
-          class="btn btn-primary btn-warning">
-    Profile
-  </button>
-<button (click)="logout()"
-        class="btn btn-primary btn-danger">
-  Logout
-</button>
-</div>
+  <app-top-navbar></app-top-navbar>
 <br/>
   <div class="row">
   <div class="col-6">
@@ -37,25 +25,26 @@
            placeholder="email"
            class="form-control"/>
     <button (click)="addUser(user.username, user.password, user.firstName, user.lastName, user.email)"
-            class="btn btn-success btn-block">
+            class="btn btn-dark">
       Add User
     </button>
     <button (click)="update(user.username, user.password, user.firstName, user.lastName, user.email)"
-            class="btn btn-primary btn-block">
+            class="btn btn-dark">
       Update
     </button>
+    <hr/>
     <h1>User Grid ({{otherusers.length}})</h1>
     <hr/>
     <div class="row">
       <div *ngFor="let u of otherusers" class="col-sm-4">
         <div class="card">
+          <img class="card-img-top" width="70%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjEDHynbFhcawWA81WmZLZpDnUBl3YbYGLB3Ec0xmvprutFAXU" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">{{u.username}}</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <button (click)="editUser(u)"
-                    class="btn btn-info">Edit</button>
-            <button (click)="deleteUser(u._id)"
-                    class="btn btn-warning">Delete</button>
+            <i (click)="editUser(u)"
+                    class="fa fa-pencil"></i>
+            <i (click)="deleteUser(u._id)"
+                    class="fa fa-trash-o"></i>
           </div>
         </div>
       </div>

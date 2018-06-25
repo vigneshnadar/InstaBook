@@ -14,7 +14,12 @@
 </button>
 </div>
 <br/>
-<div class="row">
+  <div class="row">
+  <div class="col-6">
+   <app-author-page></app-author-page>
+  </div>
+
+<!--<div class="row">-->
   <div class="col-6">
     <input [(ngModel)]="user.username"
            placeholder="User Name"
@@ -31,11 +36,11 @@
     <input [(ngModel)]="user.email"
            placeholder="email"
            class="form-control"/>
-    <button (click)="update(user)"
+    <button (click)="addUser(user.username, user.password, user.firstName, user.lastName, user.email)"
             class="btn btn-success btn-block">
       Add User
     </button>
-    <button (click)="update(user)"
+    <button (click)="update(user.username, user.password, user.firstName, user.lastName, user.email)"
             class="btn btn-primary btn-block">
       Update
     </button>
@@ -47,17 +52,17 @@
           <div class="card-body">
             <h5 class="card-title">{{u.username}}</h5>
             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a routerLink="/course/{{u.username}}"
-               class="btn btn-info">View Profile</a>
-            <button (click)="followUser(u._id)"
-                    class="btn btn-warning">Follow</button>
+            <button (click)="editUser(u)"
+                    class="btn btn-info">Edit</button>
+            <button (click)="deleteUser(u._id)"
+                    class="btn btn-warning">Delete</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-6">
-    <app-section-list></app-section-list>
-  </div>
+  <!--<div class="col-6">-->
+    <!--<app-section-list></app-section-list>-->
+  <!--</div>-->
 </div>
 </div>

@@ -29,10 +29,10 @@
     <li *ngFor="let book of books" class="list-group-item">
       {{book.name}} {{book.description}}
       <button (click)="deleteBook(book._id)" class="float-right btn btn-danger ">
-        Delete Book
+        Delete
       </button>
       <button (click)="editBook(book._id, book.name, book.description, book.imageurl)" class="float-right btn btn-success">
-        Edit Book
+        Edit
       </button>
 
     </li>

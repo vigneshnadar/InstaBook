@@ -10,6 +10,26 @@ export class UserServiceCleint {
       .then(response => response.json());
   }
 
+  deleteUser(userId) {
+    return fetch('http://localhost:4000/api/user/' + userId + '/delete', {
+      method: 'DELETE',
+      credentials: 'include', // include, same-origin, *omit
+    })
+      .then(response => response.json());
+  }
+
+  updateUser(userId, newUser) {
+    return fetch('http://localhost:4000/api/user/' + userId + '/update', {
+      body: JSON.stringify(newUser),
+      credentials: 'include',
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(response => response.json());
+}
+
   findAllUsers() {
     return fetch('http://localhost:4000/api/user', {
       credentials: 'include', // include, same-origin, *omit

@@ -19,19 +19,39 @@ export class AdminPageComponent implements OnInit {
 
   users = [];
   otherusers = [];
-  user;
+  user = {
+    _id : 0,
+    username: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    email: ''
+  }
   username;
   password;
   sections = [];
+
   ngOnInit() {
     // this.service.findAllCourses()
     //   .then(courses => this.courses = courses);
+    this.loadUsers();
+
+  }
+  loadUsers() {
     this.userService.findAllUsers()
       .then( users => {
         this.users = users;
+
         this.userService.profile()
           .then(user => {
             this.user = user;
+
+            this.user.username = user.username;
+            this.user.password = user.password;
+            this.user.firstName = user.firstName;
+            this.user.lastName = user.lastName;
+            this.user.email = user.email;
+            this.otherusers = [];
             for (let j = 0; j < this.users.length; j++) {
               console.log(this.users[j]);
               if (this.users[j]._id !== this.user._id) {
@@ -39,6 +59,47 @@ export class AdminPageComponent implements OnInit {
               }
             } // end of for
           });
+      });
+  }
+
+  editUser(u) {
+    this.user = u ;
+  }
+
+  deleteUser(userId) {
+    this.userService.deleteUser(userId)
+      .then(() => this.loadUsers());
+  }
+
+  update(username, password, firstName, lastName, email) {
+    const newUser = {
+      username: username,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      email: email
+    }
+
+    this.userService.updateUser(this.user._id, newUser)
+      .then(() => {
+        this.loadUsers();
+      });
+  }
+
+  addUser(username, password, firstName, lastName, email) {
+    const newUser = {
+      username: username,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      createdByAdmin : true,
+      email: email
+    }
+    console.log('newuser');
+    console.log(newUser);
+    this.userService.createUser(newUser)
+      .then(() => {
+        this.loadUsers();
       });
   }
 

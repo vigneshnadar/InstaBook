@@ -5,6 +5,7 @@ import {SectionServiceClient} from '../services/section.service.client';
 import {UserServiceCleint} from '../services/user.service.cleint';
 import {Course} from '../models/coruse.model.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {BookServiceClient} from '../services/book.service.client';
 
 @Component({
   selector: 'app-admin-page',
@@ -13,87 +14,54 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class AdminPageComponent implements OnInit {
 
+  constructor(private userService: UserServiceCleint,
+              private bookService: BookServiceClient) { }
 
-  courseId;
-  courses: Course[] = [];
-  enrolledCourses: Course[] = [];
-  otherCourses: Course[] = [];
-  user: User = new User();
+  users = [];
+  otherusers = [];
+  user;
   username;
   password;
   sections = [];
-
-  constructor(private service: CourseServiceClient,
-              private userService: UserServiceCleint,
-              private sectionService: SectionServiceClient,
-              private route: ActivatedRoute,
-              private normalrouter: Router) {
-    this.route.params.subscribe(
-      params => this.setParams(params));
-  }
-
-  setParams(params) {
-    this.courseId = params['courseId'];
-    console.log(this.courseId);
-  }
-
   ngOnInit() {
     // this.service.findAllCourses()
     //   .then(courses => this.courses = courses);
-
-    this.service.findAllCourses()
-      .then( courses => {
-        this.courses = courses;
-
+    this.userService.findAllUsers()
+      .then( users => {
+        this.users = users;
         this.userService.profile()
           .then(user => {
             this.user = user;
-            this.userService.findUserById(user._id)
-              .then(newuser => {
-                this.user = newuser;
-                console.log('user');
-                console.log(this.user);
-              });
-          });
-        this.sectionService
-          .findSectionsForStudent()
-          .then(sections => {
-            this.sections = sections;
-            console.log('section');
-            console.log(this.sections);
-
-            for (let i = 0; i < this.courses.length; i++) {
-              for (let j = 0; j < this.sections.length; j++) {
-                console.log(this.sections[j]);
-                if (this.sections[j].section.courseId === this.courses[i].id){
-                  this.enrolledCourses.push(this.courses[i]);
-                } else {
-                  this.otherCourses.push(this.courses[i]);
-                }
+            for (let j = 0; j < this.users.length; j++) {
+              console.log(this.users[j]);
+              if (this.users[j]._id !== this.user._id) {
+                this.otherusers.push(this.users[j]);
               }
-            }// end of fr
-            console.log('courses');
-            console.log(this.courses);
-            console.log('enrolled');
-            console.log(this.enrolledCourses);
-            console.log('unenroll');
-            console.log(this.otherCourses);
+            } // end of for
           });
       });
   }
 
-  logout() {
-    this.userService
-      .logout()
-      .then(() => this.normalrouter.navigate(['login']));
-  }
 
-  home() {
-    this.normalrouter.navigate(['home']);
-  }
+  // addUser(user) {
+  //   console.log([username, password, password2]);
+  //   if ( password !== password2) {
+  //     alert('Passwords dont match');
+  //   } else {
+  //     if ( username === 'admin' && password === 'admin') {
+  //       this.isAdmin = true;
+  //     }
+  //
+  //     const user = {
+  //       username: username,
+  //       password: password,
+  //       admin: this.isAdmin
+  //     };
+  //     this.service.createUser(user)
+  //       .then(() => this.router.navigate(['profile']));
+  //   }
+  // }
 
-  profile() {
-    this.normalrouter.navigate(['profile']);
-  }
+
 
 }

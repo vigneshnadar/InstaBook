@@ -24,12 +24,7 @@ return fetch('http://localhost:4000/api/profile',{
   .then(response =>  response.json())
   }
 
-  createUser(username, password, admin) {
-    const user = {
-      username: username,
-      password: password,
-      admin: admin
-    };
+  createUser(user) {
 
     return fetch('http://localhost:4000/api/user',{
       body: JSON.stringify(user),

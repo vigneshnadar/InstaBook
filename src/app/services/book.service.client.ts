@@ -122,4 +122,13 @@ export class BookServiceClient {
       }
     }).then(response => response.json());
   }
+
+
+  deleteBook(bookId) {
+    const url = 'http://localhost:4000/api/book/' + bookId + '/delete';
+    return fetch(url , {
+      method: 'DELETE',
+      credentials: 'include'
+    }).then(response => response.json());
+  }
 }

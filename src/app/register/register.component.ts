@@ -23,7 +23,13 @@ export class RegisterComponent implements OnInit {
       if ( username === 'admin' && password === 'admin') {
         this.isAdmin = true;
       }
-      this.service.createUser(username, password, this.isAdmin)
+
+      const user = {
+        username: username,
+        password: password,
+        admin: this.isAdmin
+      };
+      this.service.createUser(user)
         .then(() => this.router.navigate(['profile']));
     }
   }

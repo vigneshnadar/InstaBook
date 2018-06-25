@@ -4,23 +4,36 @@
     <input [(ngModel)]="bookName"
            placeholder="Book Name"
            class="form-control"/>
+    <br/>
     <input [(ngModel)]="bookDesc"
            placeholder="Book Description"
            class="form-control"/>
+    <br/>
     <input [(ngModel)]="bookUrl"
            placeholder="Image Url"
            class="form-control"/>
-    <button (click)="createBook(bookName, bookDesc, bookUrl)" class="btn btn-success btn-block">
+    <hr/>
+    <button (click)="updateBook(bookName, bookDesc, bookUrl)" class="btn btn-warning ">
+      Update Book
+    </button>
+    <button (click)="createBook(bookName, bookDesc, bookUrl)" class="btn btn-success ">
       Create Book
     </button>
     <!--<button (click)="editSection(sectionName, seats)" class="btn btn-primary btn-block">-->
       <!--Edit and Update Book-->
     <!--</button>-->
+    <hr/>
   </div>
-
+<h1>Author Book List</h1>
   <ul class="list-group">
     <li *ngFor="let book of books" class="list-group-item">
       {{book.name}} {{book.description}}
+      <button (click)="deleteBook(book._id)" class="float-right btn btn-danger ">
+        Delete Book
+      </button>
+      <button (click)="editBook(book._id, book.name, book.description, book.imageurl)" class="float-right btn btn-success">
+        Edit Book
+      </button>
 
     </li>
   </ul>

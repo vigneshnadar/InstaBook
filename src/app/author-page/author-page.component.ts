@@ -23,6 +23,7 @@ export class AuthorPageComponent implements OnInit {
   selectedSection;
   currentCourse;
   currentUser;
+  currentBookId = 0;
 
   constructor(private route: ActivatedRoute,
               private bookService: BookServiceClient,
@@ -58,7 +59,23 @@ export class AuthorPageComponent implements OnInit {
 
         this.loadBooks();
       });
-  }
+  } // end of constrcutor
+
+
+  // http://books.google.com/books/content?id=wK0xBWfL9GkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+  editBook(bookid, bookname, bookdescription, bookimageurl) {
+    this.currentBookId = bookid;
+    this.bookName = bookname;
+    this.bookDesc = bookdescription;
+    this.bookUrl = bookimageurl;
+}
+
+  deleteBook(bookid) {
+    this.bookService.deleteBook(bookid)
+      .then(response => {
+        this.loadBooks();
+      });
+}
 
 
   createBook(name, description, imgurl) {
@@ -74,7 +91,7 @@ export class AuthorPageComponent implements OnInit {
     this.bookService.createBook(newBook)
       .then(createdBook => {
         console.log(createdBook);
-
+        this.loadBooks();
       });
   }
 

@@ -90,6 +90,20 @@ export class BookServiceClient {
   //   });
   // }
 
+
+
+  updateBook( bookId, book) {
+    const url = 'http://localhost:4000/api/book/' + bookId + '/update';
+    return fetch(url , {
+      method: 'PUT',
+      body: JSON.stringify(book),
+      credentials: 'include',
+      headers: {
+        'content-type' : 'application/json'
+      }
+    })
+      .then(response => response.json());
+  }
   // editSection(sectionId, name, seats) {
   //   const url = 'http://localhost:4000/api/section/' + sectionId;
   //   const section = { name, seats};

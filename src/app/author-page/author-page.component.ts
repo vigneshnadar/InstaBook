@@ -166,5 +166,17 @@ export class AuthorPageComponent implements OnInit {
   //     });
   // }
 
+  updateBook(bookName, bookDesc, bookUrl) {
+    const book = {
+      name : bookName,
+      description: bookDesc,
+      imageurl: bookUrl
+    }
+    this.bookService.updateBook( this.currentBookId, book)
+        .then(() => {
+          this.loadBooks();
+        });
+  }
+
 }
 

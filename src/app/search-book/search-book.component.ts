@@ -20,6 +20,7 @@ export class SearchBookComponent implements OnInit {
   reviewStr = '';
   reviews = [];
   user;
+  bookClicked = false;
 
   constructor(private bookService: BookServiceClient,
               private userService: UserServiceCleint) {
@@ -28,6 +29,8 @@ export class SearchBookComponent implements OnInit {
         this.user = user;
         console.log(user._id);
       });
+
+    this.searchBook('titans');
   }
 
   ngOnInit() {
@@ -46,6 +49,7 @@ export class SearchBookComponent implements OnInit {
 
 
   details(book) {
+    this.bookClicked = true;
     this.currentBook = book;
     console.log('currentbook');
     console.log(this.currentBook);

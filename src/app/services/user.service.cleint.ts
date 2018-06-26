@@ -77,7 +77,8 @@ return fetch('http://localhost:4000/api/profile',{
       headers: {
         'content-type': 'application/json'
       }
-    });
+    })
+      .then(response => response.json());
   }
 
 

@@ -1,15 +1,16 @@
-<h1>User Grid ({{otherusers.length}})</h1>
+<h1>InstaBook User List ({{otherusers.length}})</h1>
 <hr/>
 <div class="row">
-  <div *ngFor="let u of otherusers" class="col-sm-4">
+  <div *ngFor="let u of otherusers" class="col-sm-2">
     <div class="card">
+      <img class="card-img-top" width="70%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjEDHynbFhcawWA81WmZLZpDnUBl3YbYGLB3Ec0xmvprutFAXU" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{u.username}}</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a routerLink="/course/{{u.username}}"
-           class="btn btn-info">View Profile</a>
+        <!--<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
+        <!--<a routerLink="/course/{{u.username}}"-->
+           <!--class="btn btn-info">View Profile</a>-->
         <button (click)="followUser(u._id)"
-                class="btn btn-warning">Follow</button>
+                class="btn btn-dark">Follow</button>
       </div>
     </div>
   </div>

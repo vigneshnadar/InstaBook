@@ -75,7 +75,7 @@ export class SearchBookComponent implements OnInit {
 
 
     if (this.user.username === 'unregistered') {
-      alert('Please register/login to bookmark');
+      alert('Please register/login to add review');
     } else {
       const newBook = {
         name: cb.volumeInfo.title,

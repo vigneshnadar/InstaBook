@@ -14,7 +14,7 @@
           class="btn btn-primary btn-outline-dark">
     Admin
   </button>
-  <button (click)="author()"
+  <button *ngIf="showAuthor" (click)="author()"
           class="btn btn-primary btn-outline-dark">
     Author
   </button>
@@ -26,7 +26,7 @@
           class="btn btn-primary btn-outline-dark">
     Register
   </button>
-  <button (click)="profile()"
+  <button *ngIf="showProfile" (click)="profile()"
           class="btn btn-primary btn-outline-dark">
     Profile
   </button>

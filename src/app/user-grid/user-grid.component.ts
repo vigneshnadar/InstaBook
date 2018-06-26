@@ -43,7 +43,11 @@ export class UserGridComponent implements OnInit {
   }
 
   followUser(userId) {
-    this.userService.followUser(userId);
+    if (this.user.username === 'unregistered') {
+      alert('Please register/login to follow users');
+    } else {
+      this.userService.followUser(userId);
+    }
   }
 
 }

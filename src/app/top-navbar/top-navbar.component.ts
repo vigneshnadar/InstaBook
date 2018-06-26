@@ -12,6 +12,8 @@ export class TopNavbarComponent implements OnInit {
   user = {
     admin : false
   }
+  showProfile = true;
+  showAuthor = false;
   constructor(private service: UserServiceCleint,
               private router: Router) {
 
@@ -20,12 +22,19 @@ export class TopNavbarComponent implements OnInit {
         this.user = user;
         console.log(user._id);
 
-
+        if (user.username === 'unregistered') {
+          this.showProfile = false;
+        }
         this.service.findUserById(user._id)
           .then(newuser => {
             this.user = newuser;
             console.log('user');
             console.log(this.user);
+            console.log(newuser.isauthor);
+
+            if (newuser.isauthor) {
+              this.showAuthor = true;
+            }
           });
   });
   }
